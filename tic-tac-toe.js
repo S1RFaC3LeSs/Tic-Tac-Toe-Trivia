@@ -53,11 +53,14 @@ function checkAnswer(index, selectedOption){
     
     if(selectedAnswer === correctAnswer){
         nextMove(index);
+        document.getElementById("status").innerHTML = "Correct Answer!";
+        setTimeout(() => document.getElementById("status").style.display = "Click on a square to continue", 1000);
         moveAmount++;
         if(moveAmount >= 3){
             winChecker();
         }
-    } else {
+    } 
+    else {
         alert("Game Over! Try again.");
         newGameHandler();
     }
@@ -105,7 +108,7 @@ function newGameHandler(){
     moveAmount = 0;
     win = false;
     document.getElementById("status").classList.remove("you-won");
-    document.getElementById("status").innerHTML = "Click on a square to play";
+    document.getElementById("status").innerHTML = "Click on a square to play again!";
 
     for(let child of loadBoard().children){
         child.classList.remove("X");
@@ -116,15 +119,15 @@ function newGameHandler(){
 }
 
 const questions = [
-    { question: "When did The Sexual Harassment Prevention & Protection Act, 2021 take effect?", options: ["A) October 1, 2021", "B) March 27, 2022", "C) July 3, 2023", "D) February 14, 2024"], correct: "C" },
+    { question: "When was The Sexual Harassment Protection & Prevention Act approved by parliament?", options: ["A) June 13th, 2021", "B) March 27th, 2022", "C) July 3rd, 2023", "D) February 14th, 2024"], correct: "A" },
     { question: "Who has access to a sexual harassment complaint?", options: ["A) Everyone", "B) Sexual Harassment Complaints Coordinator (SHCC)", "C) The Principal", "D) Minister of Religion"], correct: "B" },
-    { question: "Where can I file a sexual complaint?", options: ["A) reportsexualharassment@uwimona", "B) Cafe", "C) Bursary", "D) Church"], correct: "A" },
+    { question: "Where can I file a sexual complaint?", options: ["A) https://www.mona.uwi.edu/sexual-harassment/report-complaint", "B) Cafe", "C) Bursary", "D) Church"], correct: "A" },
     { question: "Which of the following is a type of sexual harassment?", options: ["A) Walking", "B) Eye-Contact", "C) Stalking", "D) Texting"], correct: "C" },
-    { question: "What are the consequences of filing a false complaint?", options: ["A) Fine not exceeding 1 million dollars AND imprisonment for a term not exceeding three months", "B) Fine not exceeding 1 hundred thousand dollars AND imprisonment for a term not exceeding one month", "C) Fine not exceeding 1 million dollars OR imprisonment for a term not exceeding three months", "D) Imprisonment for 6 months"], correct: "C" },
-    { question: "What is the Definition of Sexual Harassment?", options: ["A) The making of any unwelcome sexual advance towards a person, by another person.", "B) Someone telling you their likes and dislikes", "C) Someone telling you how they feel", "D) The perception of someone looking at you the wrong way"], correct: "A" },
+    { question: "What are the consequences of filing a false complaint with the tribunal at the BGA (Bureau of Gender Affairs)?", options: ["A) Losing your job", "B) Fine not exceeding 1 hundred thousand dollars AND imprisonment for a term not exceeding one month", "C) Fine not exceeding 1 million dollars OR imprisonment for a term not exceeding three months", "D) Imprisonment for 6 months"], correct: "C" },
+    { question: "What is the Definition of Sexual Harassment?", options: ["A) Any conduct or behaviour that constitutes unwanted and unwelcome conduct of a sexual nature by one person to another", "B) Someone telling you their likes and dislikes", "C) Someone telling you how they feel", "D) The perception of someone looking at you the wrong way"], correct: "A" },
     { question: "When can an allegation of sexual harassment be filed?", options: ["A) within 6 years of the occurrence of the alleged incident of sexual harassment.", "B) 7 weeks", "C) 6 months", "D) By End of the Semester the incident was committed"], correct: "A" },
-    { question: "Can you file a complaint for another person?", options: ["A) No, only a person directly involved can file", "B) Yes, you can file if you're a witness", "C) Yes, if you're associated with the victim", "D) No, because you may be biased"], correct: "A" },
-    { question: "If you are accused of sexual harassment what is the deadline to write a response?", options: ["A) 1 Week", "B) 2 Weeks", "C) 24 Days", "D) 10 Days"], correct: "B" }
+    { question: "Can you file a complaint for another person?", options: ["A) No, only a person directly involved can file", "B) Yes, you can as a third-party if you are a witness", "C) Yes, if you're associated with the victim", "D) No, because you may be biased"], correct: "A" },
+    { question: "If you have been notified that you are accused of sexual harassment what is the deadline for you to respond at UWI, Mona ?", options: ["A) 1 Week", "B) Couple Hours", "C) 14 Working Days", "D) 10 Working Days"], correct: "C" }
 ];
 
 const winCombos = [
