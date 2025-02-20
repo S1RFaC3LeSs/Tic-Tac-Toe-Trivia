@@ -97,6 +97,7 @@ function winChecker(){
         if(match){
             document.getElementById("status").classList.add("you-won");
             document.getElementById("status").innerHTML = "Congratulations! You're a Winner!";
+            startConfetti();
             win = true;
             break;
         }
@@ -107,6 +108,8 @@ function newGameHandler(){
     playerMoves = "000000000";
     moveAmount = 0;
     win = false;
+    stopConfetti();
+
     document.getElementById("status").classList.remove("you-won");
     document.getElementById("status").innerHTML = "Click on a square to play again!";
 
@@ -270,6 +273,57 @@ const winCombos = [
     "001011101",
     
     ];
+
+    function startConfetti() {
+        const canvas = document.getElementById("confetti");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const confettiParticles = [];
+    
+        confettiRunning = true; // Set the flag to true
+    
+        function ConfettiParticle() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height - canvas.height;
+            this.size = Math.random() * 10 + 5;
+            this.speedY = Math.random() * 3 + 2;
+            this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+    
+        function updateConfetti() {
+            if (!confettiRunning) return; // Stop animation when flag is false
+    
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < confettiParticles.length; i++) {
+                let p = confettiParticles[i];
+                p.y += p.speedY;
+                if (p.y > canvas.height) {
+                    p.y = 0;
+                }
+                ctx.fillStyle = p.color;
+                ctx.fillRect(p.x, p.y, p.size, p.size);
+            }
+    
+            animationFrameId = requestAnimationFrame(updateConfetti);
+        }
+    
+        for (let i = 0; i < 100; i++) {
+            confettiParticles.push(new ConfettiParticle());
+        }
+        updateConfetti();
+    }
+    
+    function stopConfetti() {
+        confettiRunning = false; // Stop the animation loop
+        cancelAnimationFrame(animationFrameId); // Cancel any ongoing frames
+    
+        const canvas = document.getElementById("confetti");
+        if (canvas) {
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        }
+    }
 
 var win = false;
 var playerMoves = "000000000";
