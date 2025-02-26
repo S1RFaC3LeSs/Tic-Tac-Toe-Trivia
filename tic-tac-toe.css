@@ -22,7 +22,7 @@ body {
   align-items: center;
   color: var(--white);
   height: 100vh;
-  padding-top: 10px;
+  padding-top: 1px;
 }
 
 h1 {
@@ -45,23 +45,23 @@ h1 span {
 }
 
 .controls {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 #board {
   display: grid;
-  grid-template-columns: repeat(3, 60px);
+  grid-template-columns: repeat(3, 50px);
   grid-gap: 5px;
 }
 
 #status {
   font-size: 18px;
-  margin: 10px 0;
+  margin: 5px 0;
   text-align: center;
   background: var(--darkGrey);
   color: var(--white);
   max-width: 260px;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border-top: 3px solid var(--teal);
   border-radius: 5px;
 }
@@ -81,10 +81,10 @@ h1 span {
 .square {
   background: var(--darkGrey);
   border: 1px solid var(--grey);
-  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
-  border-radius: 2.5px;
-  width: 60px;
-  height: 60px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
   font-size: 24px;
   font-weight: bold;
   display: flex;
@@ -132,6 +132,7 @@ h1 span {
   gap: 15px;
   width: 100%;
   text-align: center;
+  justify-content: center;
   align-items: center;
 }
 
@@ -143,7 +144,7 @@ h1 span {
   font-weight: 400;
   text-align: center;
   padding: 1rem 1rem;
-  margin: 5px 10px 5px 10px; /*top, right, bottom, left */
+  margin: 5px 10px 15px 10px; /*top, right, bottom, left */
   font-size: 0.9rem;
   border-radius: .25rem;
   align-items: center;
@@ -156,9 +157,13 @@ h1 span {
   cursor: pointer;
 }
 
-#question-text{
+#question-text {
   text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  white-space: normal;
 }
+
 
 
 canvas {
