@@ -23,6 +23,7 @@ body {
   color: var(--white);
   height: 100vh;
   padding-top: 1px;
+  overflow: hidden;
 }
 
 h1 {
